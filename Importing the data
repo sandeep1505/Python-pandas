@@ -34,3 +34,10 @@ len(web_file.columns)
 
 # print the column names
 web_file.columns
+
+print last 5 records
+web_file.tail(5)
+
+# print first 4 records
+web_file.head(4)
+
