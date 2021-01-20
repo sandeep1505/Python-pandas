@@ -1,0 +1,140 @@
+import pandas as pd
+
+fmcg=pd.read_excel('C:/Users/skumar59/Desktop/Excel/FMCG-Retail.xlsx')
+
+fmcg.dtypes
+fmcg.columns
+
+# Create new column pp(productpurchased)and in Product Purchased as upper case
+fmcg['PP']=fmcg['ProductPurchased'].str.upper()
+
+
+fmcg['ProductPurchased']=fmcg['ProductPurchased'].str.upper()
+
+# CONVERT THIS LOWER CASE
+fmcg['PP']=fmcg['ProductPurchased'].str.lower()
+
+# find no of characters of each of the productpurchased
+
+# create a new column pp length
+fmcg['PP length']=fmcg['ProductPurchased'].str.len()
+
+# REMOVE LEADING AND TRAILING SPACE FROM ProductPurchased column
+fmcg['ProductPurchased']=fmcg['ProductPurchased'].str.strip()
+# strip fucntion removes the space at te beginning and the end.
+
+# REMOVE LEADING SPACE FROM ProductPurchased column
+fmcg['ProductPurchased']=fmcg['ProductPurchased'].str.lstrip()
+fmcg['ProductPurchased']=fmcg['ProductPurchased'].str.rstrip()
+
+
+# Spliting and replacing string
+# get the string before -occurence
+fmcg['st']=fmcg['StoreType'].str.split('-').str.get(0)
+
+
+
+# get the string after -occurence
+fmcg['st1']=fmcg['StoreType'].str.split('-').str.get(1)
+
+
+
+# replace - with : in storetype
+fmcg['NewStoreType']=fmcg['StoreType'].str.replace('-',':')
+# 0r existing(overwrite)
+fmcg['StoreType']=fmcg['StoreType'].str.replace('-',':')
+
+
+# repalce Store-A to Complex A
+fmcg['NewStoreType']=fmcg['NewStoreType'].str.replace('Store:A','Complex:A')
+
+fmcg['StoreType']=fmcg['StoreType'].str.replace('Store:A','Complex:A')
+
+
+# Combine two columns(multiple columns) into one-Concentation
+
+fmcg['Store']=fmcg['st'].str.cat(fmcg['st1'],sep=' ')
+
+# combine with storetype
+fmcg['Region']=fmcg['Region'].str.cat(fmcg['Store'],sep=' ')
+
+
+# extract first n characters
+fmcg['ProductPurchased']=fmcg['PP']
+fmcg['ProductPurchased']=fmcg['PP'].str[0:3]
+fmcg['ProductPurchased']=fmcg['ProductPurchased'].str[0:3]
+
+fmcg['ProductPurchased']=fmcg['ProductPurchased'].str[:3]
+
+
+#export data into excel,csv etc.
+
+fmcg.to_excel('C:/Users/skumar59/output.xlsx')
+
+# export data into excel without index
+
+fmcg.to_excel('C:/Users/skumar59/output.xlsx',index=False)
+
+
+
+# export into csv
+
+fmcg.to_csv('C:/Users/skumar59/output.csv')
+
+# csv with out index
+fmcg.to_csv('C:/Users/skumar59/output.csv',index=False)
+
+
+
+#export the data into notepad as comma sepearated
+fmcg.to_csv('C:/Users/skumar59/output.txt',sep=',')
+
+fmcg.to_csv('C:/Users/skumar59/output.txt1',sep='\t')
+
+
+# find unique region name in region column
+fmcg['Region'].unique()
+
+fmcg=pd.read_excel('C:\\Users\\skumar59\\Desktop\\FMCG-Retail.xlsx')
+
+# create a data frame fr each region
+Nt=fmcg[fmcg['Region']=='North']
+St=fmcg[fmcg['Region']=='South']
+Ws=fmcg[fmcg['Region']=='West']
+Es=fmcg[fmcg['Region']=='East']
+Ct=fmcg[fmcg['Region']=='Central']
+
+
+
+# EXPORT REGIONWISE DATA TO MULTIPLE SHEET IN A SINGLE EXCEL FILE
+# For this we need call excel writer from pandas
+
+# Create a Pandas Excel writer using XlsxWriter as the engine.
+writer = pd.ExcelWriter('C:\\Users\\skumar59\\Documents\\Report.xlsx', engine='xlsxwriter')
+
+St.to_excel(writer,sheet_name='South')
+
+Nt.to_excel(writer,sheet_name='North')
+
+Ws.to_excel(writer,sheet_name='West')
+
+Es.to_excel(writer,sheet_name='East')
+
+Ct.to_excel(writer,sheet_name='Central')
+
+
+# Close the Pandas Excel writer and output the Excel file.
+writer.save()
+
+
+
+
+
+
+
+
+
+
+
+
+
