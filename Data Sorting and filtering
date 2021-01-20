@@ -24,3 +24,19 @@ prod_sales=fmcg.sort_values(['Region','StoreType','Sales'],ascending=[False,True
 
 # Reading data from a specific sheet in an excel file.
 sal=pd.read_excel('C:\\Users\\skumar59\\Desktop\\Book20.xlsx',sheetname='sal')
+
+
+import pandas as pd
+fmcg.columns
+
+'CustomerID', 'ProductPurchased', 'Quantity', 'UnitPrice', 'Sales',
+'Region', 'Date', 'StoreType'
+
+# what is total no of quantity in toothpaste category and their unit price
+a=fmcg[fmcg['ProductPurchased']=='Toothpaste'].sort_values(['Quantity','UnitPrice'],ascending=[True,False])
+
+d=fmcg[(fmcg['ProductPurchased']=='Toothpaste') & (fmcg['ProductPurchased']=='Toothbrush')]
+
+
+
+sort_values('Sales',ascending=True)
