@@ -1,0 +1,26 @@
+import pandas as pd
+
+fmcg=pd.read_excel('C:/Users/skumar59/Desktop/Excel/FMCG-Retail.xlsx')
+
+# sorting the data
+fmcg.sortvalues()
+fmcg.columns
+
+'CustomerID', 'ProductPurchased', 'Quantity', 'UnitPrice', 'Sales',
+'Region', 'Date', 'StoreType'
+
+fmcg.sort_values(['ProductPurchased','Sales'])
+prod=fmcg.sort_values(['ProductPurchased','Sales'])
+print(prod)   
+
+fmcg.sortvalues(['ProductPurchased','UnitPrice','Region'])
+up=fmcg.sort_values(['ProductPurchased','UnitPrice','Region'])
+print(up)
+
+prod_price=fmcg.sort_values(['ProductPurchased','UnitPrice','Region'],ascending=[True,False,True])
+
+prod_sales=fmcg.sort_values(['Region','StoreType','Sales'],ascending=[False,True,False])
+
+
+# Reading data from a specific sheet in an excel file.
+sal=pd.read_excel('C:\\Users\\skumar59\\Desktop\\Book20.xlsx',sheetname='sal')
