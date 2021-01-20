@@ -1,0 +1,36 @@
+import pandas as pd
+#In pandas, data can be stored in a tabular form and it is called data frame
+
+#Import data from excel file
+df=pd.read_excel('C:/Users/skumar59/Desktop/NMU DATA MARCH.xlsx')
+
+# readdata from csv file
+fmcg=pd.read_csv('C:\\Users\\skumar59\\Desktop\\FMCG-Retail.csv')
+
+# import data from notepad tab delimited
+# ''\t is used for tab seperated.it is called escape sequence character.
+df1=pd.read_table('C:\\Users\\skumar59\\Desktop\\TAB SEPARATED.txt',sep='\t')
+
+# import data from notepad comma seperated
+df2=pd.read_table('C:\\Users\\skumar59\\Desktop\\COMMA SEPERATED.txt',sep=',')
+
+
+# IMPORT DATA DIRECTLY FROM WEBPATH
+web_file=pd.read_excel('https://www.introtallent.com/wp-content/uploads/2019/12/FMCG-Retail-Data.xlsx')
+
+# start collecting infomration about your data
+
+# find the number of rows and column
+web_file.shape
+
+# find the number of rows
+
+# len command gives the count
+len(web_file)
+
+
+# fidn the number of columns
+len(web_file.columns)
+
+# print the column names
+web_file.columns
