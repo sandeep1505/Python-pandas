@@ -1,0 +1,65 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+fmcg=pd.read_excel('C:\\Users\\skumar59\\Desktop\\excel//FMCG-Retail.xlsx')
+
+# EDA Exploratory data analysis it is one of  the techniques in data science
+# analytics which helps studying and understanding the data pattern by using
+# visuals charts etc and generic insights.
+
+# find store wise total sales
+Store_Sales=fmcg.groupby('StoreType')['Sales'].sum()
+Store_Sales.plot(kind='bar')
+Store_Sales.plot(kind='bar',color='green')
+Store_Sales.plot(kind='bar',color='green',title='Storewise total sales')
+
+# grouping summarizing and plotting
+fmcg.groupby('StoreType')['Sales'].sum().plot(kind='bar',color='Red',title='Storewise total sales')
+
+
+# create horizontal bar chart.
+fmcg.groupby('StoreType')['Sales'].sum().plot(kind='bar',color='blue',title ='horizontal bar chart')
+
+
+# region wise storewise total quantity sold
+
+fmcg.groupby(['Region','StoreType'])['Quantity'].sum().plot(kind='bar',color='yellow',title='Region_Storewise Quantity')
+
+
+# check store wise region wise quantity sold
+fmcg.groupby(['StoreType','Region'])['Quantity'].sum().unstack().plot(kind='bar',stacked=False)
+
+# if stack is true
+fmcg.groupby(['StoreType','Region'])['Quantity'].sum().unstack().plot(kind='bar',stacked=True)
+
+
+# scattered plot it is used to find the relationship between 2 variables/Columns.
+# (both the columns must be numeric)
+
+fmcg.dtypes
+
+fmcg.plot(kind='scatter',x='Quantity',y='Sales',color='red')
+
+
+hc=pd.read_excel('C:/Users/skumar59/Desktop/Headcount.xlsx')
+hc.plot(kind='scatter',x='Headcount',y='Sales',color='blue')
+
+
+
+# to create line chart.
+hc.plot(kind='line',x='Headcount',y='Sales',color='grey')
+
+
+# to create pie chart region wise quantity
+fmcg.groupby('Region')['Quantity'].sum().plot(kind='pie',autopct='%1.1f%%',title='Regionwise quantity')
+fmcg.groupby('Region')['Quantity'].sum().plot(kind='pie',autopct='%1.1f%%',startangle=90,title='Regionwise quantity')
+
+plt.savefig('C:/Users/skumar59/Documents/Business Intelligence/StoreQuantity_Pie')
+
+
+
+
+
+
+
+
