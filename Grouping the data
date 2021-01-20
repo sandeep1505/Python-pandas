@@ -1,0 +1,59 @@
+import pandas as pd
+fmcg=pd.read_excel('C:\\Users\\skumar59\\Desktop\\FMCG-Retail.xlsx')
+fmcg.dtypes
+# Group by is used to aggregate and summarize data hence we must use agregate 
+# function along with group by.
+# the aggregate fucntions are sum,count,min,max,and mean(avg).
+
+# region wise total sales
+Region_Sales_total=fmcg.groupby('Region')['Sales'].sum()
+
+# find region wise count of customers
+fmcg.groupby('Region')['CustomerID'].count()
+# region wise min,max,and avg sales
+fmcg.groupby('Region')['Sales'].min()
+fmcg.groupby('Region')['Sales'].max()
+fmcg.groupby('Region')['Sales'].mean()
+
+
+# find storewise revenue total max min and avg revenue
+
+fmcg.groupby('StoreType')['Sales'].sum()
+fmcg.groupby('StoreType')['Sales'].min()
+fmcg.groupby('StoreType')['Sales'].max()
+fmcg.groupby('StoreType')['Sales'].mean()
+
+# find storewise quantity total max min and avg revenue
+fmcg.groupby('StoreType')['Quantity'].sum()
+fmcg.groupby('StoreType')['Quantity'].min()
+fmcg.groupby('StoreType')['Quantity'].max()
+fmcg.groupby('StoreType')['Quantity'].mean()
+
+# combine summary
+# find store wise region wise sales.
+
+fmcg.groupby(['StoreType','Region'])['Sales'].sum()
+fmcg.groupby(['StoreType','Region'])['Sales'].min()
+fmcg.groupby(['StoreType','Region'])['Sales'].max()
+fmcg.groupby(['StoreType','Region'])['Sales'].mean()
+
+
+
+# find store wise region wise Quantity.
+fmcg.groupby(['StoreType','Region'])['Quantity'].sum()
+fmcg.groupby(['StoreType','Region'])['Quantity'].min()
+fmcg.groupby(['StoreType','Region'])['Quantity'].max()
+fmcg.groupby(['StoreType','Region'])['Quantity'].mean()
+
+
+
+# fid the region wise store wise sales and quantity
+fmcg.groupby(['Region','StoreType'])['Sales','Quantity'].sum()
+
+fmcg.groupby(['Region','StoreType'])['Sales','Quantity'].count()
+
+fmcg.groupby(['Region','StoreType'])['Sales','Quantity'].min()
+
+fmcg.groupby(['Region','StoreType'])['Sales','Quantity'].max()
+
+fmcg.groupby(['Region','StoreType'])['Sales','Quantity'].mean()
