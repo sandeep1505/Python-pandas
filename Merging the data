@@ -1,0 +1,42 @@
+import pandas as pd
+
+stu=pd.read_excel('C:/Users/skumar59/Desktop/Stu data.xlsx')
+Ad=pd.read_excel('C:/Users/skumar59/Desktop/Admission.xlsx')
+
+# Append-when you have  same orders of columns and want to add more data in the bottom ten we use append
+
+# append stu and ad dat in student master
+stu_master=stu.append(Ad)
+
+Ad1=Ad
+Ad2=Ad
+
+
+# append all the data from differnet data frames.
+stu_master=stu.append([Ad,Ad1,Ad2])
+
+
+sec=pd.read_excel('C:/Users/skumar59/Desktop/section.xlsx')
+
+# Concat-when you have same orders of records alone in both the data and combine
+ # columns from secind data then we use concat.(pd.concat)
+# both the data mush have same no of rows
+
+# combine column from sec into stu using concat
+stu_sec=pd.concat([stu,sec],axis=1)
+
+
+# for concat always should give axis=1
+
+
+city=pd.read_excel('C:/Users/skumar59/Desktop/city.xlsx')
+
+# when you have matching key in both the data frame and based on that you want to 
+# search values from this data then use merge.
+
+
+#  merging stu and city
+stu_inner=pd.merge(stu,city,how='inner',on='Id')
+stu_left=pd.merge(stu,city,how='left',on='Id')
+stu_right=pd.merge(stu,city,how='right',on='Id')
+stu_outer=pd.merge(stu,city,how='outer',on='Id')
