@@ -41,3 +41,7 @@ web_file.tail(5)
 # print first 4 records
 web_file.head(4)
 
+#check data types of columns
+web_file.dtypes
+
+
